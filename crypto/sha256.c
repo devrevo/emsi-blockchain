@@ -1,16 +1,19 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "hblk_crypto.h"
 
-/* Giving a body to *sha256
- * This function computes the hash of a sequence s and stores it into digest
- * return a pointer to digest if digest is null do nothing and return null.
+/**
+ * sha256 - compute the hash of a sequence of bytes
+ * @s: Sequence of bytes to be hashed
+ * @len: Bytes to hash
+ * @digest: array to store resulting hash in
+ *
+ * Return: pointer to digest, NULL on error
  */
+
 uint8_t *sha256(int8_t const *s, size_t len, uint8_t digest[SHA256_DIGEST_LENGTH])
 {
-  if(s == NULL){
+
+  if(!s || !digest){
     return NULL;
-  return (SHA256((const unsigned char *)s, len, digest));
+  return SHA256((const unsigned char *)s, len, digest);
 }
