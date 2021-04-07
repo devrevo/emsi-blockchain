@@ -16,6 +16,12 @@
 # define EC_PUB_LEN     65
 # define SIG_MAX_LEN    72
 
+/**
+ * struct sig_s - EC Signature structure
+ *
+ * @sig: Signature buffer. The whole space may not be used
+ * @len: Actual signature size. Can't exceed SIG_MAX_LEN, therefore stored on a byte
+ */
 typedef struct sig_s
 {
 uint8_t sig[SIG_MAX_LEN];
