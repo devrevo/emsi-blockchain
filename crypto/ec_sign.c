@@ -27,7 +27,6 @@ return (NULL);
 if (ECDSA_sign(EC_CURVE, msg, SHA256_DIGEST_LENGTH, sig->sig,
 	       (unsigned int *)&sig->len, (EC_KEY *)key) != 1)
 return (NULL);
-sig->len = len;
 return (sig->sig);
 }
 
