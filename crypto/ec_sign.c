@@ -18,7 +18,7 @@ uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,
 {
 unsigned char cmsg[SHA256_DIGEST_LENGTH];
 unsigned int len;
-if (!key || !msg || !EC_KEY_check_key(key))
+if (!key || !msg || !EC_KEY_check_key(key) || !sig)
 return (NULL);
 if (!SHA256(msg, msglen, cmsg))
 return (NULL);
