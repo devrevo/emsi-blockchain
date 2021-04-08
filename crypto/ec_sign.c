@@ -21,7 +21,7 @@ if (!key || !msg || !EC_KEY_check_key(key) || !sig)
 return (NULL);
 if (!SHA256(msg, msglen, cmsg))
 return (NULL);
-sig->len = ECDSA_size(key);
+sig->len = ECDSA_size(key) + 1;
 if (!sig->len || sig->len > SIG_MAX_LEN)
 return (NULL);
 if (ECDSA_sign(EC_CURVE, msg, SHA256_DIGEST_LENGTH, sig->sig,
