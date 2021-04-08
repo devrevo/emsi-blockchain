@@ -16,7 +16,7 @@
 uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,
 	size_t msglen, sig_t *sig)
 {
-if (key == NULL || msg == NULL || sig == NULL)
+  if (key == NULL || msg == NULL || sig == NULL || !EC_KEY_check_key(key))
 return (NULL);
 sig->len = ECDSA_size(key);
 if (!sig->len || sig->len > SIG_MAX_LEN)
