@@ -21,7 +21,7 @@ if (key == NULL || msg == NULL || !sig || !EC_KEY_check_key(key))
 return (NULL);
 if (!SHA256(msg, msglen, cmsg))
 return (NULL);
-memset(sig->sig, 0, sizeof(sig->sig));
+memset(sig->sig, 0, sizeof(sig->sig) + 1);
 sig->len = ECDSA_size(key);
 if (!sig->len || sig->len > SIG_MAX_LEN)
 return (NULL);
