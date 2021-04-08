@@ -22,7 +22,7 @@ memset(sig->sig, 0, sizeof(sig->sig));
 sig->len = ECDSA_size(key);
 if (!sig->len || sig->len > SIG_MAX_LEN)
 return (NULL);
-if (ECDSA_sign(EC_CURVE, msg, msglen, sig->sig,
+if (ECDSA_sign(EC_CURVE, msg, msglen+1, sig->sig,
 	       (unsigned int *)&sig->len, (EC_KEY *)key) != 1)
 return (NULL);
 return (sig->sig);
