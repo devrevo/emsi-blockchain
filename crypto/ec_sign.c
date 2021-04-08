@@ -24,8 +24,8 @@ return (NULL);
 sig->len = ECDSA_size(key);
 if (!sig->len || sig->len > SIG_MAX_LEN)
 return (NULL);
-if (!ECDSA_sign(EC_CURVE, cmsg, SHA256_DIGEST_LENGTH, sig->sig,
-	(unsigned int *)&sig->len, (EC_KEY *)key))
+if (ECDSA_sign(EC_CURVE, cmsg, SHA256_DIGEST_LENGTH, sig->sig,
+	(unsigned int *)&sig->len, (EC_KEY *)key) != 1)
 return (NULL);
 return (sig->sig);
 }
