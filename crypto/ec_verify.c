@@ -18,7 +18,7 @@ int ec_verify(EC_KEY const *key, uint8_t const *msg,
 	      size_t msglen, sig_t const *sig)
 {
 unsigned char cmsg[SHA256_DIGEST_LENGTH];
-if (!msg || !key || !sig || !EC_KEY_check_key(key))
+if (msg == NULL || key == NULL || !sig || !EC_KEY_check_key(key))
 return (0);
 if (!SHA256(msg, msglen, cmsg))
 return (0);
