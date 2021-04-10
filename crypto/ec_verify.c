@@ -25,7 +25,7 @@ return (0);
 if (msg == NULL)
 return (0);
 if (sig == NULL)
-return (NULL);
+return (0);
 if (!SHA256(msg, msglen, cmsg))
 return (0);
 if (ECDSA_verify(EC_CURVE, cmsg, SHA256_DIGEST_LENGTH,
