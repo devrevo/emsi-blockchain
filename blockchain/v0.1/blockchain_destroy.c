@@ -6,6 +6,6 @@
 void blockchain_destroy(blockchain_t *blockchain){
 if (!blockchain)
 return;
-if (llist_destroy(blockchain->chain, 0, NULL) == 0)
+llist_destroy(blockchain->chain, 1, (node_dtor_t)free);
 free(blockchain);
 }
