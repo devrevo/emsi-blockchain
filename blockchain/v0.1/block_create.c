@@ -25,17 +25,19 @@ block->info.difficulty = 0;
 t = time(0);
 block->info.timestamp = (uint64_t)&t;
 block->info.nonce = 0;
+for (i = 0; i < BLOCKCHAIN_DATA_MAX; i++)
+{
+block->data.buffer[i] = 0;
+}
 for (i = 0; i < (int)max_len; i++)
 {
 block->data.buffer[i] = data[i];
 }
 block->data.len = max_len;
-printf("BlockHash is");
 for (i = 0; i < SHA256_DIGEST_LENGTH; i++)
 {
 block->hash[i] = 0;
-block->info.prev_hash[i] = ((block_t *)prev)->hash[i];
-printf("%d", block->hash[i]);
+block->info.prev_hash[i] = prev->hash[i];
 }
 return (block);
 }
