@@ -12,7 +12,8 @@ uint8_t *block_hash(block_t const *block,
 {
 if (block == NULL)
 return (NULL);
-if (!SHA256((const unsigned char *)block->data.buffer,(size_t)block->data.len, hash_buf))
+if (sha256(block->data.buffer,
+	   (size_t)block->data.len, hash_buf) == NULL)
 return (NULL);
 return (hash_buf);
 }
