@@ -1,4 +1,3 @@
-#include <openssl/sha.h>
 #include "blockchain.h"
 
 /**
@@ -10,10 +9,6 @@
 uint8_t *block_hash(block_t const *block,
 		    uint8_t hash_buf[SHA256_DIGEST_LENGTH])
 {
-if (block == NULL)
-return (NULL);
-if (sha256(block->data.buffer,
-	   (size_t)block->data.len, hash_buf) == NULL)
-return (NULL);
-return (hash_buf);
+
+  return (sha256((void *)block, sizeof(block->info) + block->data.len, hash_buf));
 }
