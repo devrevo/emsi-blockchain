@@ -26,7 +26,10 @@ return (NULL);
 bzero(sig->sig, sizeof(sig->sig));
 if (ECDSA_sign(EC_CURVE, msg, msglen, sig->sig,
 	       &len, (EC_KEY *)key) != 1)
+{
+sig->len = 0;
 return (NULL);
+}
 sig->len = (uint8_t)len;
 return (sig->sig);
 }
