@@ -25,7 +25,7 @@ if (msg == NULL)
 return (0);
 if (sig == NULL)
 return (0);
-if (ECDSA_verify(0, msg, SHA256_DIGEST_LENGTH,
+if (ECDSA_verify(0, msg, msglen,
 		 sig->sig, sig->len, (EC_KEY *)key) != 1)
 return (0);
 return (1);
