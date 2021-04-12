@@ -24,7 +24,7 @@ return (NULL);
 if (!EC_KEY_check_key(key))
 return (NULL);
 bzero(sig->sig, sizeof(sig->sig));
-if (!ECDSA_sign(EC_CURVE, msg, msglen, sig->sig,
+if (!ECDSA_sign(0, msg, msglen, sig->sig,
 	       &len, (EC_KEY *)key))
 {
 sig->len = 0;
