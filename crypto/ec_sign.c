@@ -22,8 +22,7 @@ if (msg == NULL)
 return (NULL);
 if (!EC_KEY_check_key(key))
 return (NULL);
-memset(sig->sig, 0, sizeof(sig->sig) + 1);
-sig->len = ECDSA_size(key);
+bzero(sig->sig, sizeof(sig->sig));
 if (!sig->len)
 return (NULL);
 if (ECDSA_sign(EC_CURVE, msg, msglen, sig->sig,
